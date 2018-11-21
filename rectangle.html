@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    
+    <link href="style.css" rel="stylesheet" type="text/css" media="all">
+    <meta charset="utf-8">
+    <title>posing</title>
+    <script src="app.js"></script>
+</head>
+
+<body>
+        <debugarea>debug area<br>
+            X座標：<input type="text" id="txtX" />
+            Y座標：<input type="text" id="txtY" /><br>
+            Map X座標：<input type="text" id="txtMapClickX" />
+            Map Y座標：<input type="text" id="txtMapClickY" />
+            Video X座標：<input type="text" id="txtCameraClickX" />
+            Video Y座標：<input type="text" id="txtCameraClickY" />
+        </debugarea>
+        <maparea>map                          
+                
+                <div id = "map_area_id"></div>
+        </maparea>
+    
+        <cameraarea>camera
+                <div id = "camera_area_id"></div>
+        </cameraarea>
+        <aside id="cntrlarea1">Cntrl1<br>
+            <input id="target1" type="file" ><br>
+            <input id="target2" type="file" >
+        </aside>
+        <aside id="cntrlarea2">Cntrl2
+        </aside>
+        <footer>
+            <div type="text" id="txt_log_id" disabled="disabled"></div>
+        </footer>
+
+</body>
+    
+</html>

@@ -1,0 +1,74 @@
+
+body {
+    display: grid;
+    margin: 0;
+    min-height: 100vh;
+    grid-template-rows: 100px 100px 1fr 130px;
+    grid-template-columns: 500px 500px 1fr;
+    grid-template-areas:
+        "debugarea  debugarea   debugarea "
+        "maparea    cameraarea   cntrlarea1    "
+        "maparea    cameraarea   cntrlarea2  "
+        "footer     footer  footer";
+}
+body > * {
+    margin: 2px;
+    padding: 5px;
+}
+debugarea {
+    grid-area: debugarea;
+    background: #faa;
+    border-radius: 10px 10px 0 0;
+}
+cameraarea {
+    grid-area: cameraarea;
+    background: #afa;
+}
+maparea {
+    grid-area: maparea;
+    background: #aaf;
+}
+#cntrlarea2 {
+    grid-area: cntrlarea2;
+    background: #faf;
+}
+footer {
+    grid-area: footer;
+    background: #aaa;
+    border-radius: 0 0 10px 10px;
+    overflow: scroll;
+}
+#cntrlarea1 {
+    grid-area: cntrlarea1;
+    background: #888;
+}
+  
+#open_map_image_button {
+    display: block;
+    cursor: pointer;
+    width: 150px;
+    text-align: center;
+    border: 1px solid #232323;
+  }
+
+.square_btn {
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #fd9535;/*背景色*/
+    border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+}
+
+.square_btn:active {
+    border-bottom: solid 2px #fd9535;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+div#map_area_id{ width:480px;  height:360px; border:1px solid black; overflow:auto }
+div#camera_area_id{ width:480px;  height:360px; border:1px solid black; overflow:auto }
+div#txt_log_id{ width:1fr;  height:100px; border:1px solid black; overflow:auto }
