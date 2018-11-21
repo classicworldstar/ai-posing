@@ -42,7 +42,18 @@ footer {
     grid-area: cntrlarea1;
     background: #888;
 }
-  
+
+#make_json_data_id {
+    background-color: #E1F5A9;
+    box-shadow: 2px 2px 4px;
+}
+
+#save_json_data_id {
+    background-color: #E1F5A9;
+    box-shadow: 2px 2px 4px;
+}
+
+
 #open_map_image_button {
     display: block;
     cursor: pointer;

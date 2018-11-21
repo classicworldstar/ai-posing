@@ -4,8 +4,8 @@ var mY;
 var dataPoints = [
   { name : "camera000",
     region : {
-      cameraPoints: [],
-      mapPoints: []
+      mapPoints: [],
+      cameraPoints: []
     }
   }
 ];
@@ -25,24 +25,55 @@ window.onload=function(){
 
   document.getElementById("map_area_id").onclick = function() {
     // ここに#buttonをクリックしたら発生させる処理を記述する
- 
+    var localX = Math.round(mX-getRectLeft("map_area_id"));
+    var localY = Math.round(mY-getRectTop("map_area_id"));
     //座標を表示する
-    document.getElementById("txtMapClickX").value = mX;
-    document.getElementById("txtMapClickY").value = mY;
+    document.getElementById("txtMapClickX").value = localX;
+    document.getElementById("txtMapClickY").value = localY;
 
-    document.getElementById("txt_log_id").innerHTML += '<a >MapPoints:[' + String(Math.round(mX-getRectLeft("map_area_id"))) + ',' + String(Math.round(mY-getRectTop("map_area_id"))) + ']</a><br>';
+    document.getElementById("txt_log_id").innerHTML += '<a >MapPoints:[' + String(localX) + ',' + String(localY) + ']</a><br>';
     
     goBottom("txt_log_id");
   };
 
   document.getElementById("camera_area_id").onclick = function() {
     // ここに#buttonをクリックしたら発生させる処理を記述する
- 
-    //座標を表示する
-    document.getElementById("txtCameraClickX").value = mX;
-    document.getElementById("txtCameraClickY").value = mY;
+    var localCameraX = Math.round(mX-getRectLeft("camera_area_id"));
+    var localCameraY = Math.round(mY-getRectTop("camera_area_id"));
+    var localMapX = document.getElementById("txtMapClickX").value;
+    var localMapY = document.getElementById("txtMapClickY").value;
 
-    document.getElementById("txt_log_id").innerHTML += '<a >CameraPoints:[' + String(mX) + ',' + String(mY) + ']</a><br>';
+    //座標を表示する
+    document.getElementById("txtCameraClickX").value = localCameraX;
+    document.getElementById("txtCameraClickY").value = localCameraY;
+
+    document.getElementById("txt_log_id").innerHTML += '<a >CameraPoints:[' + String(localCameraX) + ',' + String(localCameraY) + ']</a><br>';
+
+    var localData = {name : "camera000", region: {mapPoints: [localMapX, localMapY], cameraPoints : [localCameraX, localCameraY]}};
+    dataPoints.push(localData);
+    
+    goBottom("txt_log_id");
+  };
+  document.getElementById("make_json_data_id").onclick = function() {
+    // ここに#buttonをクリックしたら発生させる処理を記述する
+    document.getElementById("txt_log_id").innerHTML += '<a >Start click map and camera image</a><br>';
+    dataPoints.length = 0;
+
+    document.getElementById("txtCameraClickX").value = "";
+    document.getElementById("txtCameraClickY").value = "";
+    document.getElementById("txtMapClickX").value = "";
+    document.getElementById("txtMapClickY").value = "";
+    
+    goBottom("txt_log_id");
+  };
+
+  document.getElementById("save_json_data_id").onclick = function() {
+    // ここに#buttonをクリックしたら発生させる処理を記述する
+    document.getElementById("txt_log_id").innerHTML += '<a>' + JSON.stringify(dataPoints) + '</a><br>';
+//    document.getElementById("txt_log_id").innerHTML += '<a>test</a><br>';
+
+    dataPoints.length = 0;
+
     goBottom("txt_log_id");
   };
 

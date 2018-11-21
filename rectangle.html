@@ -10,12 +10,12 @@
 
 <body>
         <debugarea>debug area<br>
-            X座標：<input type="text" id="txtX" />
-            Y座標：<input type="text" id="txtY" /><br>
-            Map X座標：<input type="text" id="txtMapClickX" />
-            Map Y座標：<input type="text" id="txtMapClickY" />
-            Video X座標：<input type="text" id="txtCameraClickX" />
-            Video Y座標：<input type="text" id="txtCameraClickY" />
+            絶対座標　X：<input type="text" id="txtX" />
+            Y：<input type="text" id="txtY" /><br>
+            相対座標　Map X：<input type="text" id="txtMapClickX" />
+            Map Y：<input type="text" id="txtMapClickY" />
+            Video X：<input type="text" id="txtCameraClickX" />
+            Video Y：<input type="text" id="txtCameraClickY" />
         </debugarea>
         <maparea>map                          
                 
@@ -29,7 +29,9 @@
             <input id="target1" type="file" ><br>
             <input id="target2" type="file" >
         </aside>
-        <aside id="cntrlarea2">Cntrl2
+        <aside id="cntrlarea2">Cntrl2<br>
+            <input type="button" id="make_json_data_id" class="button" value="create">
+            <input type="button" id="save_json_data_id" class="button" value=" save ">
         </aside>
         <footer>
             <div type="text" id="txt_log_id" disabled="disabled"></div>
