@@ -2,13 +2,14 @@
 var mX;
 var mY;
 var dataPoints = [
-  { name : "camera000",
-    region : {
-      mapPoints: [],
-      cameraPoints: []
+  { name : "camera000" ,
+    region :  {
+      mapPoints: [[]],
+      cameraPoints: [[]]
     }
   }
 ];
+
 
 window.onload=function(){
   //マウス移動時のイベントをBODYタグに登録する
@@ -64,6 +65,21 @@ window.onload=function(){
     document.getElementById("txtMapClickX").value = "";
     document.getElementById("txtMapClickY").value = "";
     
+    ImagePoints.length = 0;
+
+    goBottom("txt_log_id");
+  };
+
+  document.getElementById("add_region_id").onclick = function() {
+    // ここに#buttonをクリックしたら発生させる処理を記述する
+
+    addLog("add region")
+    goBottom("txt_log_id");
+  };
+
+  document.getElementById("add_point_id").onclick = function() {
+    // ここに#buttonをクリックしたら発生させる処理を記述する
+    addLog("add point")
     goBottom("txt_log_id");
   };
 
@@ -89,8 +105,8 @@ window.onload=function(){
 
       // HTMLに書き出し (src属性にblob URLを指定)
 //  		document.body.innerHTML += '<a href="' + blobUrl + '" target="_blank"><img src="' + blobUrl + '"></a>' ;
-//  		document.getElementById("map_area_id").innerHTML += '<a href="' + blobUrl + '" target="_blank"><img src="' + blobUrl + '"></a>' ;
-      document.getElementById("map_area_id").innerHTML += '<a><img src="' + blobUrl + '"></a>' ;
+//  		document.getElementById("map_area_id").innerHTML += '<a href="' + blobUrl + '" target="_blank"><img src="' + blobUrl + '"></a>' ;      
+      document.getElementById("map_area_id").innerHTML = '<a><img src="' + blobUrl + '"></a>' ;
     }
   } ) ;
 
@@ -136,4 +152,8 @@ function getRectTop(targetId) {
   // 画面の左端から、要素の左端までの距離
   return clientRect.top ;
 
+}
+
+function addLog(txt_log){
+  document.getElementById("txt_log_id").innerHTML += '<a>' + txt_log + '</a><br>';
 }

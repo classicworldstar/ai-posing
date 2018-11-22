@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <title>posing</title>
     <script src="app.js"></script>
+    <script src="obj_move.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -17,20 +18,22 @@
             Video X：<input type="text" id="txtCameraClickX" />
             Video Y：<input type="text" id="txtCameraClickY" />
         </debugarea>
-        <maparea>map                          
-                
-                <div id = "map_area_id"></div>
+        <maparea>map        
+            <div id = "map_area_id"></div>  
         </maparea>
     
         <cameraarea>camera
-                <div id = "camera_area_id"></div>
+            <div id = "camera_area_id"></div>
         </cameraarea>
         <aside id="cntrlarea1">Cntrl1<br>
             <input id="target1" type="file" ><br>
             <input id="target2" type="file" >
         </aside>
         <aside id="cntrlarea2">Cntrl2<br>
-            <input type="button" id="make_json_data_id" class="button" value="create">
+            <input type="button" id="make_json_data_id" class="button" value="start">
+            <input type="button" id="add_region_id" class="button" value="add region" disabled><br>
+            <input type="button" id="add_point_id" class="button" value="add point" disabled>
+
             <input type="button" id="save_json_data_id" class="button" value=" save ">
         </aside>
         <footer>

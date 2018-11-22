@@ -48,6 +48,17 @@ footer {
     box-shadow: 2px 2px 4px;
 }
 
+#add_region_id {
+    background-color: #E1F5A9;
+    box-shadow: 2px 2px 4px;
+}
+
+#add_point_id {
+    background-color: #E1F5A9;
+    box-shadow: 2px 2px 4px;
+}
+
+
 #save_json_data_id {
     background-color: #E1F5A9;
     box-shadow: 2px 2px 4px;
@@ -83,3 +94,19 @@ footer {
 div#map_area_id{ width:480px;  height:360px; border:1px solid black; overflow:auto }
 div#camera_area_id{ width:480px;  height:360px; border:1px solid black; overflow:auto }
 div#txt_log_id{ width:1fr;  height:100px; border:1px solid black; overflow:auto }
+
+
+.sample-box {
+    position: relative;
+}
+
+.balllon-pointer {  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
