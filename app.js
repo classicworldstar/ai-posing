@@ -2,7 +2,7 @@
 var mX;
 var mY;
 var dataPoints = [
-  { name : "camera000" ,
+  { name : "" ,
     region :  {
       mapPoints: [[]],
       cameraPoints: [[]]
@@ -32,7 +32,7 @@ window.onload=function(){
     document.getElementById("txtMapClickX").value = localX;
     document.getElementById("txtMapClickY").value = localY;
 
-    document.getElementById("txt_log_id").innerHTML += '<a >MapPoints:[' + String(localX) + ',' + String(localY) + ']</a><br>';
+    document.getElementById("txt_log_id").innerHTML += 'MapPoints:[' + String(localX) + ',' + String(localY) + ']<br>';
     
     goBottom("txt_log_id");
   };
@@ -52,7 +52,7 @@ window.onload=function(){
 
     var localData = {name : "camera000", region: {mapPoints: [localMapX, localMapY], cameraPoints : [localCameraX, localCameraY]}};
     dataPoints.push(localData);
-    
+
     goBottom("txt_log_id");
   };
   document.getElementById("make_json_data_id").onclick = function() {
@@ -88,8 +88,16 @@ window.onload=function(){
     document.getElementById("txt_log_id").innerHTML += '<a>' + JSON.stringify(dataPoints) + '</a><br>';
 //    document.getElementById("txt_log_id").innerHTML += '<a>test</a><br>';
 
-    dataPoints.length = 0;
+    saveJsonData(dataPoints, "test.json");
 
+    dataPoints.length = 0;
+    goBottom("txt_log_id");
+  };
+
+  document.getElementById("save_log_data_id").onclick = function() {
+    // ここに#buttonをクリックしたら発生させる処理を記述する
+
+    saveTxtData(document.getElementById("txt_log_id").innerText, "test.log");
     goBottom("txt_log_id");
   };
 
@@ -106,7 +114,8 @@ window.onload=function(){
       // HTMLに書き出し (src属性にblob URLを指定)
 //  		document.body.innerHTML += '<a href="' + blobUrl + '" target="_blank"><img src="' + blobUrl + '"></a>' ;
 //  		document.getElementById("map_area_id").innerHTML += '<a href="' + blobUrl + '" target="_blank"><img src="' + blobUrl + '"></a>' ;      
-      document.getElementById("map_area_id").innerHTML = '<a><img src="' + blobUrl + '"></a>' ;
+//      document.getElementById("map_area_id").innerHTML = '<a><img src="' + blobUrl + '"></a>' ;
+      drawImage("map_area_id",fileList[i].name,0,0);
     }
   } ) ;
 
@@ -123,7 +132,9 @@ window.onload=function(){
         // HTMLに書き出し (src属性にblob URLを指定)
 //    		document.body.innerHTML += '<a href="' + blobUrl + '" target="_blank"><img src="' + blobUrl + '"></a>' ;
 //        document.getElementById("video_area_id").innerHTML = '<a href="' + blobUrl + '" target="_blank"><img src="' + blobUrl + '"></a>' ;
-        document.getElementById("camera_area_id").innerHTML = '<a><img src="' + blobUrl + '"></a>' ;
+//        document.getElementById("camera_area_id").innerHTML = '<a><img src="' + blobUrl + '"></a>' ;
+        drawImage("camera_area_id",fileList[i].name,0,0);
+
       }
     } ) ;
     
@@ -156,4 +167,58 @@ function getRectTop(targetId) {
 
 function addLog(txt_log){
   document.getElementById("txt_log_id").innerHTML += '<a>' + txt_log + '</a><br>';
+}
+
+function saveJsonData(JsonData, fileName){
+  const blob = new Blob([JSON.stringify(JsonData, null, '  ')],
+  {type: 'application\/json'});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = fileName;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+function saveTxtData(txtData, fileName){
+  const blob = new Blob([txtData],
+  {type: 'application\/json'});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = fileName;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+function drawImage(target, fileName, x, y) {
+  var canvas = document.getElementById(target);
+  if ( ! canvas || ! canvas.getContext ) { return false; }
+  /* Imageオブジェクトを生成 */
+  var ctx = canvas.getContext('2d');
+  var img = new Image();
+  img.src = fileName+'?' + new Date().getTime();
+  /* 画像が読み込まれるのを待ってから処理を続行 */
+  img.onload = function() {
+    var imageWidth = img.width;
+    var imageHeight = img.height;
+
+  
+    var canvasWidth = canvas.width;
+    var canvasHeight = canvas.height;
+    var canvasSizeRatio = canvasHeight / canvasWidth;
+    var imageSizeRatio = imageHeight / imageWidth;
+    if(imageSizeRatio <= canvasSizeRatio){
+      var TranceWidth = canvasWidth;
+      var conpRatio = canvasWidth / imageWidth;
+      var TranceHeight = conpRatio * imageHeight;
+    }else{
+      var TranceHeight = canvasHeight;
+      var conpRatio = canvasHeight / imageHeight;
+      var TranceWidth = conpRatio * imageWidth;
+    }
+//    ctx.drawImage(img, x, y, 400, 300);  
+    ctx.drawImage(img, x, y, TranceWidth, TranceHeight);  
+
+  }
 }

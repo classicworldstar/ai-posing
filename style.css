@@ -2,9 +2,10 @@
 body {
     display: grid;
     margin: 0;
+    resize: both;
     min-height: 100vh;
-    grid-template-rows: 100px 100px 1fr 130px;
-    grid-template-columns: 500px 500px 1fr;
+    grid-template-rows: 60px 80px 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
         "debugarea  debugarea   debugarea "
         "maparea    cameraarea   cntrlarea1    "
@@ -12,56 +13,66 @@ body {
         "footer     footer  footer";
 }
 body > * {
-    margin: 2px;
+    margin: 1px;
     padding: 5px;
 }
 debugarea {
     grid-area: debugarea;
-    background: #faa;
+    font-size: 10px;
+    background: rgb(255, 213, 213);
     border-radius: 10px 10px 0 0;
 }
 cameraarea {
     grid-area: cameraarea;
-    background: #afa;
+    font-size: 10px;
+    background: rgb(218, 245, 218);
 }
 maparea {
     grid-area: maparea;
+    font-size: 10px;
     background: #aaf;
+}
+#cntrlarea1 {
+    grid-area: cntrlarea1;
+    font-size: 10px;
+    background: #888;
 }
 #cntrlarea2 {
     grid-area: cntrlarea2;
+    font-size: 10px;
     background: #faf;
 }
 footer {
     grid-area: footer;
+    font-size: 10px;
     background: #aaa;
     border-radius: 0 0 10px 10px;
-    overflow: scroll;
-}
-#cntrlarea1 {
-    grid-area: cntrlarea1;
-    background: #888;
 }
 
 #make_json_data_id {
     background-color: #E1F5A9;
-    box-shadow: 2px 2px 4px;
+    box-shadow: 1px 1px 2px;
 }
 
 #add_region_id {
     background-color: #E1F5A9;
-    box-shadow: 2px 2px 4px;
+    box-shadow: 1px 1px 2px;
 }
 
 #add_point_id {
     background-color: #E1F5A9;
-    box-shadow: 2px 2px 4px;
+    box-shadow: 1px 1px 2px;
 }
 
 
 #save_json_data_id {
     background-color: #E1F5A9;
-    box-shadow: 2px 2px 4px;
+    box-shadow: 1px 1px 2px;
+}
+
+#save_log_data_id {
+    background-color: #E1F5A9;
+    box-shadow: 1px 1px 2px;
 }
 
 
@@ -71,6 +82,7 @@ footer {
     width: 150px;
     text-align: center;
     border: 1px solid #232323;
+    font-size: 10px;
   }
 
 .square_btn {
@@ -91,8 +103,8 @@ footer {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
-div#map_area_id{ width:480px;  height:360px; border:1px solid black; overflow:auto }
-div#camera_area_id{ width:480px;  height:360px; border:1px solid black; overflow:auto }
+canvas#map_area_id{ width:400px;  height:300px; border:1px solid black; overflow:auto; resize:auto }
+canvas#camera_area_id{ width:400px;  height:300px; border:1px solid black; overflow:auto; resize:auto }
 div#txt_log_id{ width:1fr;  height:100px; border:1px solid black; overflow:auto }
 
 

@@ -5,25 +5,27 @@
     <link href="style.css" rel="stylesheet" type="text/css" media="all">
     <meta charset="utf-8">
     <title>posing</title>
+    <!--[if IE]>
+    <script type="text/javascript" src="excanvas.js"></script>
+    <![endif]-->
     <script src="app.js"></script>
-    <script src="obj_move.js" charset="utf-8"></script>
 </head>
 
 <body>
-        <debugarea>debug area<br>
+        <debugarea>
             絶対座標　X：<input type="text" id="txtX" />
             Y：<input type="text" id="txtY" /><br>
-            相対座標　Map X：<input type="text" id="txtMapClickX" />
-            Map Y：<input type="text" id="txtMapClickY" />
-            Video X：<input type="text" id="txtCameraClickX" />
-            Video Y：<input type="text" id="txtCameraClickY" />
+            相対座標　map X：<input type="text" id="txtMapClickX" />
+            map Y：<input type="text" id="txtMapClickY" />
+            cam X：<input type="text" id="txtCameraClickX" />
+            cam Y：<input type="text" id="txtCameraClickY" />
         </debugarea>
         <maparea>map        
-            <div id = "map_area_id"></div>  
+            <canvas id = "map_area_id" width="400"  height="300"></canvas>  
         </maparea>
     
         <cameraarea>camera
-            <div id = "camera_area_id"></div>
+            <canvas id = "camera_area_id" width="400"  height="300"></div>
         </cameraarea>
         <aside id="cntrlarea1">Cntrl1<br>
             <input id="target1" type="file" ><br>
@@ -34,10 +36,16 @@
             <input type="button" id="add_region_id" class="button" value="add region" disabled><br>
             <input type="button" id="add_point_id" class="button" value="add point" disabled>
 
-            <input type="button" id="save_json_data_id" class="button" value=" save ">
+            <input type="button" id="save_json_data_id" class="button" value=" save "><br>
+            <a>1) click start button.</a><br>
+            <a>2) click map area and camera area more than once.</a><br>
+            <a>3) click save button.</a><br>
+
         </aside>
         <footer>
             <div type="text" id="txt_log_id" disabled="disabled"></div>
+            <input type="button" id="save_log_data_id" class="button" value=" save "><br>
+
         </footer>
 
 </body>
