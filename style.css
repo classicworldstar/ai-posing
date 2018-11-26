@@ -105,7 +105,7 @@ footer {
 
 canvas#map_area_id{ width:400px;  height:300px; border:1px solid black; overflow:auto; resize:auto }
 canvas#camera_area_id{ width:400px;  height:300px; border:1px solid black; overflow:auto; resize:auto }
-div#txt_log_id{ width:1fr;  height:100px; border:1px solid black; overflow:auto }
+div#txt_log_id{ width:1fr;  height:120px; border:1px solid black; overflow:auto }
 
 
 .sample-box {

@@ -70,16 +70,18 @@ window.onload=function(){
     goBottom("txt_log_id");
   };
 
+  var ctxText;
   document.getElementById("add_region_id").onclick = function() {
     // ここに#buttonをクリックしたら発生させる処理を記述する
 
-    addLog("add region")
+    addLog("add region"); 
+    ctxText.trancelate()  
     goBottom("txt_log_id");
   };
 
   document.getElementById("add_point_id").onclick = function() {
     // ここに#buttonをクリックしたら発生させる処理を記述する
-    addLog("add point")
+    addLog("add point");
     goBottom("txt_log_id");
   };
 
@@ -203,7 +205,6 @@ function drawImage(target, fileName, x, y) {
     var imageWidth = img.width;
     var imageHeight = img.height;
 
-  
     var canvasWidth = canvas.width;
     var canvasHeight = canvas.height;
     var canvasSizeRatio = canvasHeight / canvasWidth;
@@ -218,7 +219,7 @@ function drawImage(target, fileName, x, y) {
       var TranceWidth = conpRatio * imageWidth;
     }
 //    ctx.drawImage(img, x, y, 400, 300);  
-    ctx.drawImage(img, x, y, TranceWidth, TranceHeight);  
-
+    ctx.drawImage(img, x, y, TranceWidth, TranceHeight);   
   }
 }
+
